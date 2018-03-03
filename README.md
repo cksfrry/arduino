@@ -5,7 +5,7 @@
 ### Hardware board: Arduino UNO (Entry Level products)
 
 ### Schematic
-![image](https://github.com/cksfrry/arduino/upload/master/schematic.PNG)
+![image](https://github.com/cksfrry/arduino/blob/master/schematic.PNG)
 
 
 ### Code
@@ -36,13 +36,10 @@ file: smart_trashcan.ino
 - D11 - Ultra sonic sensor Pin Echo
 - D12 -  Speaker
 
-### Video
-#### Arduino Test
-```
-https://youtu.be/NzCuclbSiTM
-```
 
-#### Toy demo:
-```
-https://youtu.be/aCrbWswlUyI
-```
+### Arduino Test
+[![Alt text](https://img.youtube.com/vi/NzCuclbSiTM/0.jpg)](https://youtu.be/NzCuclbSiTM)
+
+
+### Toy demo:
+[![Alt text](https://img.youtube.com/vi/aCrbWswlUyI/0.jpg)](https://youtu.be/aCrbWswlUyI)
