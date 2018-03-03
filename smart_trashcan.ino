@@ -1,6 +1,5 @@
 #include<Servo.h>
 
-
 Servo servo;
 const int seq[] = {2,3,4,5,6,7,8}; //7 segment display, 7段顯示器
 const int servoOut = 9;  //servo motor output
@@ -12,7 +11,6 @@ const int Clear=10;
 const byte num[11]={0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0xFD, 0x07, 0x7F, 0x6F, 0x00};
 const int inter_time = 1; //Ultrasound detected distance
 int mytime = 0;  //ultrasound detected period
-
 
 //============Mario tone=================================
 //High score:(8 ~ 9)
@@ -30,9 +28,21 @@ int f3[7]={760, 720, 680, 620, 650, 380, 430};
 int d3[7]={100, 100, 100, 150, 150, 100, 100};
 int y3[7]={100, 150, 150, 300, 300, 150, 150};
 
+/**
+ * High score = 8 ~ 9
+ * Medium score = 5 ~ 7
+ * Low score = 0 ~ 4
+ * 
+ * The high score point is in front of the sensor 10 cm where move close or keep away will decreasing score. 
+ *
+ **/
+
+
 void setup() {
   Serial.begin(9600);
-  showNum(0);
+
+  showNum(0); //7 segment display
+
   // number display
   for(int i=0;i<7;i++) {
     pinMode(seq[i], OUTPUT);
@@ -44,7 +54,7 @@ void setup() {
     digitalWrite(led[i], LOW);
   }
 
-  //UltraSound
+  //UltraSound sensor
   pinMode (trig, OUTPUT);
   pinMode (echo, INPUT);
   servo.attach(servoOut);
@@ -54,13 +64,20 @@ void loop() {
   float d;
   c = c < 20 ? c+1: 0;
   d = Detect(c);
+
   if( d <= 20){
+    // Rising flag
     servo.write(180);
-    flashNum(int(d));
+
+    // Update score
+    flashNum(int(d)); 
+
+    //Falling flag
     servo.write(90);
   }
 }
 
+//Play mario tone 
 void playMario(int freq[], int dura[], int dly[], int size){
   for(int i=0; i < size; i++){
     tone(speaker, freq[i], dura[i]);
@@ -68,6 +85,7 @@ void playMario(int freq[], int dura[], int dly[], int size){
   }
 }
 
+//Update score
 void flashNum(int n) 
 {
   n = 10 - (abs(n - 10));
@@ -89,6 +107,7 @@ void flashNum(int n)
   }
 }
 
+//7 segment display scan
 void showNum(int n) 
 {
   for(int i=0;i<7;i++){
@@ -97,6 +116,7 @@ void showNum(int n)
   }
 }
 
+//Ultrasonic sensor detect distance
 float Detect(int c)
 {
   if(c >= 0 && c < 5) {
@@ -122,5 +142,3 @@ float Detect(int c)
   delay(inter_time);
   return distance;
 }
-
-

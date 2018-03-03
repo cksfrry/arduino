@@ -2,6 +2,8 @@
 
 ### The arduino board can show the basketball shooting score and play the different sound and rise flag while hit the trash can.
 
+#### The high score point is in front of the sensor 10 cm where move close or keep away will decreasing score.
+
 ### Hardware board: Arduino UNO (Entry Level products)
 
 ### Schematic
