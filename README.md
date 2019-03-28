@@ -1,4 +1,4 @@
-# Arduino basketball shooting machine score toy
+# Arduino basketball shooting score toy trash can
 
 ### The arduino board can show the basketball shooting score and play the different sound and rise flag while hit the trash can.
 
